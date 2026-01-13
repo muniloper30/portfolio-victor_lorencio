@@ -20,12 +20,15 @@
 
 /* Custom Base Styles */
 @layer base {
+  /* ✅ IMPORTANT: allow vertical scrolling on mobile (fixes tabs/inner scroll issues) */
   html {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: clip; /* better than hidden (prevents accidental sideways scroll) */
+    overflow-y: auto; /* allow page to scroll normally */
   }
 
-  html.lenis, html.lenis body {
+  /* Lenis integration */
+  html.lenis,
+  html.lenis body {
     height: auto;
   }
 
@@ -37,6 +40,7 @@
     overscroll-behavior: contain;
   }
 
+  /* Only block scroll when Lenis explicitly stops it */
   .lenis.lenis-stopped {
     overflow: hidden;
   }
@@ -48,14 +52,14 @@
   body {
     /* Fondo transparente para dejar ver el div fixed del app.html */
     @apply bg-transparent text-gray-400 font-sans antialiased selection:bg-accent/20 selection:text-accent;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: clip; /* keep horizontal overflow under control */
+    overflow-y: auto; /* ✅ allow vertical scrolling */
     position: relative;
     width: 100%;
     min-height: 100vh;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar (desktop) */
   ::-webkit-scrollbar {
     width: 10px;
   }
