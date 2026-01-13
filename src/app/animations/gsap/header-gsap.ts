@@ -15,7 +15,7 @@ export function animateHeader() {
             stagger: 0.1
         }, '-=0.5');
 
-    return tl;
+    ;
 }
 
 export function animateMobileMenu(isOpen: boolean) {
