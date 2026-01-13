@@ -1,0 +1,61 @@
+@if (isOpen && skill) {
+<div #modalOverlay class="fixed inset-0 z-[60] flex items-center justify-center p-4 opacity-0 invisible">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" (click)="closeModal()"></div>
+
+    <!-- Modal Content -->
+    <div #modalContent (click)="$event.stopPropagation()" class="relative w-full max-w-lg bg-slate-900/90 border border-slate-700/50 rounded-3xl p-8 shadow-2xl overflow-hidden
+             opacity-0 scale-[0.92] translate-y-2 will-change-transform will-change-opacity"
+        [style.box-shadow]="'0 0 50px -10px ' + skill.color + '20'">
+        <!-- Glow Effect -->
+        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
+            [style.background]="skill.color"></div>
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
+            [style.background]="skill.color"></div>
+
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-6 relative z-10">
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 p-3 bg-slate-800/50 rounded-2xl border border-white/5">
+                    <img [src]="skill.icon" [alt]="skill.name" class="w-full h-full object-contain drop-shadow-md" />
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-white flex items-center gap-3">
+                        {{ skill.name }}
+                    </h3>
+
+                </div>
+            </div>
+
+            <button (click)="closeModal()"
+                class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full">
+                <lucide-icon [img]="xIcon" [size]="24"></lucide-icon>
+            </button>
+        </div>
+
+        <!-- Body -->
+        <div class="mb-8 relative z-10">
+            <h4 class="text-accent font-mono text-sm mb-2">Descripción</h4>
+            <p class="text-slate-300 leading-relaxed text-lg">
+                {{ skill.description }}
+            </p>
+        </div>
+
+        <!-- Footer Stats -->
+        <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6 relative z-10">
+            <div class="flex flex-col">
+                <span class="text-slate-500 text-xs uppercase tracking-wider mb-1">Experiencia</span>
+                <span class="text-xl font-bold text-slate-200">{{ skill.years }}</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-slate-500 text-xs uppercase tracking-wider mb-1">Uso</span>
+                <span class="text-xl font-bold text-slate-200">{{ skill.usage }}</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-slate-500 text-xs uppercase tracking-wider mb-1">En Estudio</span>
+                <span class="text-xl font-bold text-slate-200">{{ skill.inStudy }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+}

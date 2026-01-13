@@ -1,0 +1,73 @@
+<!-- Header Bar -->
+<header 
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4"
+  [class.bg-slate-950/80]="isScrolled()"
+  [class.backdrop-blur-xl]="isScrolled()"
+  [class.shadow-lg]="isScrolled()">
+  <nav class="container mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" 
+       class="text-accent font-mono text-xl font-bold hover:opacity-80 transition-opacity"
+       (click)="scrollToSection($event, '#hero')">
+      VLG
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-8" style="counter-reset: nav-item;">
+      @for (item of navItems(); track item.href) {
+        <li class="nav-link-item">
+          <a [href]="item.href" 
+             class="nav-link" 
+             (click)="scrollToSection($event, item.href)">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+      <li class="nav-link-item">
+        <a href="/cv.pdf" target="_blank" class="btn-primary">
+          Currículum
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="md:hidden text-accent p-2 hover:bg-accent/10 rounded transition-colors"
+      (click)="toggleMobileMenu()"
+      [attr.aria-label]="mobileMenuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      [attr.aria-expanded]="mobileMenuOpen()">
+      <lucide-icon [img]="menuIcon" [size]="24"></lucide-icon>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Menu (Full Screen Overlay) -->
+<div #mobileMenu
+  class="md:hidden fixed inset-0 bg-slate-950 z-[60] flex flex-col mobile-menu-overlay opacity-0 pointer-events-none">
+  
+  <!-- Top Bar for Close Button -->
+  <div class="px-6 py-4 flex justify-between items-center bg-slate-950/50 backdrop-blur-sm pt-6"> 
+     <a href="#" class="text-accent font-mono text-xl font-bold" (click)="scrollToSection($event, '#')">VLG</a>
+     
+     <button 
+      class="text-accent p-2 hover:bg-accent/10 rounded transition-colors"
+      (click)="closeMobileMenu()"
+      aria-label="Cerrar menú">
+      <lucide-icon [img]="xIcon" [size]="24"></lucide-icon>
+    </button>
+  </div>
+
+  <nav class="flex flex-col items-center justify-center flex-1 gap-8" style="counter-reset: nav-item;">
+    @for (item of navItems(); track item.href) {
+      <a #mobileNavLink
+        [href]="item.href" 
+        class="nav-link text-2xl mobile-nav-link"
+        (click)="scrollToSection($event, item.href)">
+        {{ item.label }}
+      </a>
+    }
+    <a #mobileNavLink href="/cv.pdf" target="_blank" class="btn-primary mt-8 text-lg px-8 py-4 mobile-nav-link">
+      Currículum
+    </a>
+  </nav>
+</div>

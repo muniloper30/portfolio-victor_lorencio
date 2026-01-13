@@ -1,0 +1,41 @@
+<section 
+  id="hero" 
+  class="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+  
+  <!-- Add fixed vignette from styles.css if not already globally applied, 
+       but here we can just use a local one for safety or rely on the global one. 
+       The global one is 'fixed' so it covers everything. -->
+
+
+
+  <div class="z-10 text-center space-y-4 md:space-y-6 hero-main-content">
+    <!-- Main Name Split -->
+    <h1 class="flex flex-col items-center leading-[0.85] font-mono-display text-white uppercase hero-title-main">
+      <span #nameVictor class="text-6xl md:text-8xl lg:text-[10rem] tracking-tighter hero-name-line overflow-hidden" id="name-victor">
+        Victor
+      </span>
+      <span #nameLorencio class="text-6xl md:text-8xl lg:text-[10rem] tracking-tighter hero-name-line overflow-hidden" id="name-lorencio">
+        Lorencio
+      </span>
+    </h1>
+
+    <!-- Looping Subtitle Section -->
+    <div class="relative h-12 flex flex-col items-center justify-center">
+      <h2 #typewriter class="text-xl md:text-2xl font-mono text-accent uppercase tracking-[0.3em] hero-typewriter opacity-0 absolute">
+        <!-- Replaced by GSAP -->
+      </h2>
+      <p class="text-gray-500 text-xs md:text-sm font-mono uppercase tracking-widest hero-subtitle-extra pt-20">
+        Crafting Digital Experiences
+      </p>
+    </div>
+
+    <!-- Minimal CTA -->
+    <div class="pt-16 hero-cta-minimal">
+      <a href="#about" (click)="scrollTo($event, '#about')" class="group flex flex-col items-center gap-4 transition-all duration-300">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-gray-400 group-hover:text-accent">Explore</span>
+        <div class="w-px h-16 bg-gradient-to-b from-accent to-transparent"></div>
+      </a>
+    </div>
+  </div>
+
+</section>

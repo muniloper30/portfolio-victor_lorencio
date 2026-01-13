@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Major+Mono+Display&display=swap');
+
+/* Custom Vignette Effect */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: radial-gradient(circle, transparent 50%, rgba(10, 16, 26, 0.4) 100%);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+.font-mono-display {
+  font-family: 'Major Mono Display', monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    /* Fondo transparente para dejar ver el div fixed del app.html */
+    @apply bg-transparent text-gray-400 font-sans antialiased selection:bg-accent/20 selection:text-accent;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-700/50 rounded-full hover:bg-gray-600 transition-colors;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  .section-heading {
+    @apply text-2xl md:text-3xl font-semibold text-gray-200 flex items-center gap-4 mb-10;
+  }
+
+  .section-heading::before {
+    content: counter(section, decimal-leading-zero) '.';
+    @apply text-accent font-mono text-xl md:text-2xl;
+    counter-increment: section;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply h-px bg-gray-800 flex-1 opacity-50;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-accent transition-colors duration-300 font-mono text-sm;
+  }
+
+  .nav-link::before {
+    @apply text-accent;
+    counter-increment: nav-item;
+    content: '0' counter(nav-item) '. ';
+  }
+
+  .btn-primary {
+    @apply border border-accent text-accent px-6 py-3 rounded font-mono text-sm 
+           bg-accent/5 hover:bg-accent/10 hover:shadow-[0_0_20px_rgba(227,25,55,0.2)] 
+           transition-all duration-300 backdrop-blur-sm;
+  }
+
+  .btn-link {
+    @apply text-accent hover:underline underline-offset-4 transition-all duration-300 font-mono text-sm;
+  }
+
+  .card {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-700/30 rounded-lg p-6 
+           transition-all duration-300 hover:-translate-y-2 hover:border-accent/30 
+           hover:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)];
+  }
+
+  .text-highlight {
+    @apply text-gray-100 font-medium;
+  }
+
+  .project-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  .gsap-reveal {
+    opacity: 0;
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}

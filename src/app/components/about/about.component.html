@@ -1,0 +1,75 @@
+<section id="about" class="py-24 px-6 md:px-12 lg:px-24" #sectionRef>
+  <div class="max-w-4xl mx-auto" style="counter-reset: section 0;">
+    <h2 class="section-heading about-heading">Sobre Mí</h2>
+
+    <div class="grid md:grid-cols-[3fr_2fr] gap-12 items-start">
+      <!-- Text Content -->
+      <div class="space-y-4 about-text">
+        <p class="text-gray-300 leading-relaxed">
+          ¡Hola! Soy Víctor, <span class="text-highlight">desarrollador FullStack</span> con experiencia creando
+          aplicaciones web orientadas a rendimiento, mantenibilidad y una buena experiencia de usuario.
+        </p>
+
+        <p class="text-gray-300 leading-relaxed">
+          He trabajado desarrollando interfaces con <span class="text-highlight">React, Angular</span> y <span
+            class="text-highlight">TypeScript</span>,
+          integrando <span class="text-highlight">APIs REST</span> para la gestión de datos y flujos de autenticación, y
+          colaborando en equipo con
+          metodología <span class="text-highlight">Agile/Scrum</span>.
+        </p>
+
+        <p class="text-gray-300 leading-relaxed">
+          Me encanta el Frontend pero también estoy cómodo en la parte backend, trabajando con bases de datos
+          <span class="text-highlight">SQL (PostgreSQL/MySQL)</span> y entornos de desarrollo con
+          <span class="text-highlight">Docker</span>, siempre con foco en buenas prácticas y control de versiones con
+          <span class="text-highlight">Git/GitHub</span>.
+        </p>
+
+        <p class="text-gray-300 leading-relaxed">
+          Estas son algunas de las tecnologías con las que he trabajado recientemente:
+        </p>
+
+        <ul class="grid grid-cols-2 gap-2 mt-4">
+          @for (skill of skills(); track skill) {
+          <li class="flex items-center gap-2 text-sm font-mono text-gray-300">
+            <span class="text-accent">▹</span>
+            {{ skill }}
+          </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Image / Avatar Section (Moved from Hero) -->
+      <div class="flex justify-center relative about-image">
+        <div class="relative w-64 h-64 lg:w-80 lg:h-80">
+
+          <!-- Glowing Arc (Back) -->
+          <div class="absolute inset-0 rounded-full border-t-4 border-r-4 border-accent/80 
+                          animate-spin-slow blur-[2px] shadow-[0_0_30px_theme('colors.accent.DEFAULT')]">
+          </div>
+          <!-- Glowing Arc (Front - thinner) -->
+          <div class="absolute inset-2 rounded-full border-t-2 border-r-2 border-accent 
+                          animate-spin-slow-reverse opacity-70">
+          </div>
+
+          <!-- Image Container -->
+          <div
+            class="absolute inset-3 rounded-full overflow-hidden bg-slate-800 border-4 border-slate-900/50 z-10 shadow-2xl">
+            <img src="assets/victor.png" alt="Víctor Lorencio"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 z-20 
+                       bg-slate-900/90 backdrop-blur-md border border-slate-700/50 
+                       px-6 py-3 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap
+                       animate-bounce-subtle">
+            <span class="text-gray-200 font-medium">Hello there</span>
+            <span class="text-xl">👋</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

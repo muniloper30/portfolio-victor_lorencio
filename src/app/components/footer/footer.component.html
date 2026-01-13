@@ -1,0 +1,57 @@
+<footer class="py-8 text-center border-t border-slate-700/30" #footerRef>
+  <!-- Social Links (Mobile visible, desktop on side) -->
+  <div class="md:hidden flex justify-center gap-6 mb-6">
+    @for (link of socialLinks(); track link.name) {
+    <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+      class="text-gray-300 hover:text-accent hover:-translate-y-1 transition-all duration-300"
+      [attr.aria-label]="link.name">
+      @if (link.icon) {
+      <lucide-icon [img]="link.icon" [size]="20"></lucide-icon>
+      } @else {
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        class="w-5 h-5 text-gray-300 hover:text-accent transition-colors duration-300" aria-hidden="true">
+        <path
+          d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+      </svg>
+      }
+
+    </a>
+    }
+  </div>
+
+  <a href="https://github.com/victorlorencio" target="_blank" rel="noopener noreferrer"
+    class="font-mono text-xs text-gray-300 hover:text-accent transition-colors">
+    <p class="mb-1">Diseñado y construido por Víctor Lorencio García</p>
+    <p>Built with Angular &amp; ❤️</p>
+  </a>
+</footer>
+
+<!-- Fixed Social Links (Desktop) -->
+<div class="hidden md:flex fixed left-6 lg:left-10 bottom-0 flex-col items-center gap-6">
+  @for (link of socialLinks(); track link.name) {
+  <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+    class="text-gray-300 hover:text-accent hover:-translate-y-1 transition-all duration-300"
+    [attr.aria-label]="link.name">
+    @if (link.icon) {
+    <lucide-icon [img]="link.icon" [size]="20"></lucide-icon>
+    } @else {
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+      class="w-5 h-5 text-gray-300 hover:text-accent transition-colors duration-300" aria-hidden="true">
+      <path
+        d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+    </svg>
+    }
+  </a>
+  }
+  <div class="w-px h-24 bg-gray-300"></div>
+</div>
+
+<!-- Fixed Email (Desktop) -->
+<div class="hidden md:flex fixed right-6 lg:right-10 bottom-0 flex-col items-center gap-6">
+  <a href="mailto:victorlorencio&#64;gmail.com"
+    class="font-mono text-xs text-gray-300 hover:text-accent transition-colors tracking-widest"
+    style="writing-mode: vertical-rl;">
+    victorlorencio&#64;gmail.com
+  </a>
+  <div class="w-px h-24 bg-gray-300"></div>
+</div>
