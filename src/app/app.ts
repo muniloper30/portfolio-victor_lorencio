@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollService } from './services/scroll.service';
+import { StructuredDataService } from './services/structured-data.service';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -32,10 +33,17 @@ import { FooterComponent } from './components/footer/footer.component';
 export class App implements OnInit, AfterViewInit {
   private platformId = inject(PLATFORM_ID);
   private scrollService = inject(ScrollService);
+  private structuredDataService = inject(StructuredDataService);
   protected readonly title = signal('Víctor Lorencio García');
 
   ngOnInit() {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Add structured data for SEO (only in browser)
+    if (isPlatformBrowser(this.platformId)) {
+      this.structuredDataService.addStructuredData(this.structuredDataService.createPersonSchema());
+      this.structuredDataService.addStructuredData(this.structuredDataService.createWebSiteSchema());
+    }
   }
 
   ngAfterViewInit() {

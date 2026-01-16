@@ -5,9 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "build:stats": "ng build --configuration production --stats-json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portfolio-victor": "node dist/portfolio-victor/server/server.mjs"
+    "serve:ssr:portfolio-victor": "node dist/portfolio-victor/server/server.mjs",
+    "perf:test": "lhci autorun",
+    "perf:analyze": "npx webpack-bundle-analyzer dist/portfolio-victor/browser/stats.json"
   },
   "prettier": {
     "printWidth": 100,

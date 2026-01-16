@@ -1,0 +1,8 @@
+# robots.txt for Portfolio - Victor Lorencio
+# Allow all crawlers to index the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://victorlorencio.com/sitemap.xml
